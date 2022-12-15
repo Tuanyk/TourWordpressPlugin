@@ -153,7 +153,7 @@ add_filter('the_content', 'leo_render_theme');
 
 function leo_render_theme( $content )
 {
-    if (get_post_type() == 'ptour') {
+    if (get_post_type() == 'tour') {
         ob_start();
         require_once plugin_dir_path( __FILE__ ). 'template.php';
         $content = ob_get_contents();
