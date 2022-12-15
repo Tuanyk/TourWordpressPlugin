@@ -1,0 +1,61 @@
+.leo_box {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+}
+
+.leo_fields {
+    width: 100%;
+}
+
+.leo_box label {
+    font-size: 17px;
+    font-weight: 700;
+    margin-left: 10px;
+    background-color: white;
+    color: #0066cc;
+    box-shadow: rgb(0 0 0 / 12%) 0px 0px 0px 1px inset;
+    border-radius: 0.3em;
+    padding: 0px 1.3em;
+}
+
+.leo_box input {
+    display: inline-block;
+    width: 100%;
+}
+
+.leo_box table,
+.leo_box table td,
+.leo_box table th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.leo_box table {
+    width: 100%;
+}
+
+.has-border {
+    border: 1px solid #0000002b;
+    box-shadow: 0px 10px 20px -10px #555555;
+}
+
+.has-border .tr {
+    padding: 25px;
+    border-bottom: 5px solid black;
+}
+
+.image-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+.image-group > div {
+    width: 10%;
+    padding: 20px;
+    border: 1px solid #e3e3e3;
+}
+.image-group img {
+    width: 100%;
+    height: auto;
+}
+
