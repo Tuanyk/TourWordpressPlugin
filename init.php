@@ -2,7 +2,8 @@
 
 // INITIALIZE CUSTOM POST
 
-function tours_config() {
+function tours_config()
+{
     $data = array(
         'slug' => 'tour',
         'singular_name' => 'Tour',
@@ -18,13 +19,13 @@ function tours_init()
     $labels = array(
         'name' => tours_config()['name'],
         'singular_name' => tours_config()['singular_name'],
-        'add_new' => 'Add New '.tours_config()['singular_name'],
-        'add_new_item' => 'Add New '.tours_config()['singular_name'],
-        'edit_item' => 'Edit '.tours_config()['singular_name'],
-        'new_item' => 'New '.tours_config()['singular_name'],
-        'all_items' => 'All '.tours_config()['name'],
-        'view_item' => 'View '.tours_config()['singular_name'],
-        'search_items' => 'Search '.tours_config()['name'],
+        'add_new' => 'Add New ' . tours_config()['singular_name'],
+        'add_new_item' => 'Add New ' . tours_config()['singular_name'],
+        'edit_item' => 'Edit ' . tours_config()['singular_name'],
+        'new_item' => 'New ' . tours_config()['singular_name'],
+        'all_items' => 'All ' . tours_config()['name'],
+        'view_item' => 'View ' . tours_config()['singular_name'],
+        'search_items' => 'Search ' . tours_config()['name'],
         'not_found' =>  'No Items Found',
         'not_found_in_trash' => 'No Items found in Trash',
         'parent_item_colon' => '',
@@ -51,7 +52,16 @@ function tours_init()
     register_post_type(tours_config()['slug'], $args);
 
     // register taxonomy
-    register_taxonomy( tours_config()['slug_category'], tours_config()['slug'], array('hierarchical' => true, 'label' => tours_config()['singular_name'].' Categories', 'query_var' => true, 'rewrite' => array('slug' => tours_config()['slug_category'])));
+    register_taxonomy(
+        tours_config()['slug_category'],
+        tours_config()['slug'],
+        array(
+            'hierarchical' => true,
+            'label' => tours_config()['singular_name'] . ' Categories',
+            'query_var' => true,
+            'rewrite' => array('slug' => tours_config()['slug_category'])
+        )
+    );
 }
 
 add_action('init', 'tours_init');
@@ -73,30 +83,38 @@ function leo_save_meta_box($post_id)
         $post_id = $parent_id;
     }
     $fields = tours_custom_fields();
-    foreach ($fields as $field=>$field_type) {
+    foreach ($fields as $field => $field_type) {
         if (array_key_exists($field, $_POST)) {
             update_post_meta($post_id, $field, $_POST[$field]);
         }
     }
-
 }
 add_action('save_post', 'leo_save_meta_box');
 
 
-add_action( 'admin_enqueue_scripts', 'load_wp_media_files' );
-function load_wp_media_files( $page ) {
+// METADATA FOR CATEGORY
+
+
+
+// 
+
+
+add_action('admin_enqueue_scripts', 'load_wp_media_files');
+function load_wp_media_files($page)
+{
     // Enqueue WordPress media scripts
     wp_enqueue_media();
     // Enqueue custom script that will interact with wp.media
-    wp_enqueue_script( 'leo_script', plugins_url( '/assets/script.js' , __FILE__ ), array('jquery'));
+    wp_enqueue_script('leo_script', plugins_url('/assets/script.js', __FILE__), array('jquery'));
     // wp_enqueue_script( 'leo_media', plugins_url( '/assets/media.js' , __FILE__ ), array('jquery'), '0.1' );
-    wp_enqueue_style( 'leo_style', plugins_url( '/assets/style.css' , __FILE__ ));
+    wp_enqueue_style('leo_style', plugins_url('/assets/style.css', __FILE__));
 }
 
 // Ajax action to refresh the user image
 add_action('wp_ajax_leo_get_image', 'leo_get_image');
 
-function leo_get_image() {
+function leo_get_image()
+{
     if (isset($_GET['id'])) {
         $image = wp_get_attachment_image(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT), 'medium', false, array('class' => 'leo-preview-image'));
         $data = array(
@@ -111,39 +129,39 @@ function leo_get_image() {
 
 add_action('wp_ajax_leo_get_field', 'leo_get_field');
 
-function leo_get_field() {
-    if ( isset($_GET['child_fields']) && isset($_GET['field_id'])) {
-        
-        ob_start(); 
-        ?>
+function leo_get_field()
+{
+    if (isset($_GET['child_fields']) && isset($_GET['field_id'])) {
+
+        ob_start();
+?>
         <div class="tr">
             <div class="data">
-        <?php
-        $child_fields = json_decode(stripslashes($_GET['child_fields']), true);
+                <?php
+                $child_fields = json_decode(stripslashes($_GET['child_fields']), true);
 
-        foreach ($child_fields as $child_key=>$child_value) {
-            
-            $single_field_data = [$_GET['field_id'], $child_value['label'], $child_key];
-            switch ($child_value['type']) {
-                case 'text_field':
-                    leo_single_text_field(...$single_field_data);
-                    break;
-                case 'media_field':
-                    leo_single_media_field(...$single_field_data);
-                    break;
-                case 'text_editor':
-                    leo_single_text_editor(...$single_field_data);
-                    break;
-            }
-        } 
-        ?>
+                foreach ($child_fields as $child_key => $child_value) {
+
+                    $single_field_data = [$_GET['field_id'], $child_value['label'], $child_key];
+                    switch ($child_value['type']) {
+                        case 'text_field':
+                            leo_single_text_field(...$single_field_data);
+                            break;
+                        case 'media_field':
+                            leo_single_media_field(...$single_field_data);
+                            break;
+                        case 'text_editor':
+                            leo_single_text_editor(...$single_field_data);
+                            break;
+                    }
+                }
+                ?>
             </div>
             <div class="btn"><button class="button-primary remove-current">Remove</button></div>
         </div>
-        
-        <?php
-        $content = ob_get_contents();
 
+<?php
+        $content = ob_get_contents();
         ob_end_clean();
         $data = array(
             'div' => $content,
@@ -156,41 +174,24 @@ function leo_get_field() {
 
 // RENDER TEMPLATE
 
-/* 
+add_filter('taxonomy_template', 'leo_custom_template_category');
 
-add_filter('the_content', 'leo_render_theme');
-
-// WORK WITH ELEMENTOR
-// add_filter('elementor/frontend/the_content', 'leo_render_theme');
-
-function leo_render_theme( $content )
+function leo_custom_template_category($single)
 {
-    if (get_post_type() == tours_config()['slug']) {
-        ob_start();
-        require_once plugin_dir_path( __FILE__ ). 'template.php';
-        $content = ob_get_contents();
-        ob_clean();
-        ob_end_flush();
-        return $content;
+    if (is_tax(tours_config()['slug_category'])) {
+        return plugin_dir_path( __FILE__ )."template/template_cat_1.php";;
     }
-	else {
-		return $content;
-	}
+    return $single;
 }
-
-*/
 
 add_filter('single_template', 'leo_custom_template');
 
-function leo_custom_template($single) {
-
-    /* Checks for single template by post type */
+function leo_custom_template($single)
+{
     if (get_post_type() == tours_config()['slug']) {
         return choose_template();
     }
-
     return $single;
-
 }
 
 ?>

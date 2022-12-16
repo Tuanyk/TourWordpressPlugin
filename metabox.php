@@ -53,18 +53,18 @@ function leo_meta_box_output()
         </div>
 
         <div class="has-border">
-            <?= leo_single_text_field('leo_tour_title', 'Title'); ?>
+            <?= leo_single_text_field('leo_tour_title', 'Title *'); ?>
             <?= leo_single_text_field('leo_tour_subtitle', 'Subtitle'); ?>
-            <?= leo_single_text_editor('leo_tour_description', 'Tour Description'); ?>
+            <?= leo_single_text_editor('leo_tour_description', 'Tour Description *'); ?>
         </div>
 
         <div class="has-border ">
-            <?= leo_single_text_field('leo_price', 'Price'); ?>
+            <?= leo_single_text_field('leo_price', 'Price *'); ?>
             <?= leo_single_text_field('leo_old_price', 'Old Price'); ?>
-            <?= leo_single_text_field('leo_duration', 'Duration'); ?>
-            <?= leo_single_text_field('leo_vehicle', 'Vehicle'); ?>
-            <?= leo_single_text_field('leo_departure_day', 'Departure Day'); ?>
-            <?= leo_single_text_field('leo_hotline', 'Hotline'); ?>
+            <?= leo_single_text_field('leo_duration', 'Duration *'); ?>
+            <?= leo_single_text_field('leo_vehicle', 'Vehicle *'); ?>
+            <?= leo_single_text_field('leo_departure_day', 'Departure Day *'); ?>
+            <?= leo_single_text_field('leo_hotline', 'Hotline *'); ?>
             <?= leo_single_text_field('leo_starting_point', 'Starting Point'); ?>
             <?= leo_single_text_field('leo_countdown_hour', 'Countdown Hour'); ?>
             <?= leo_single_text_field('leo_how_many_star', 'How many star'); ?>
@@ -73,7 +73,7 @@ function leo_meta_box_output()
         <div class="has-border">
             <?= leo_repeater(
                 'leo_itinerary',
-                'Itinerary',
+                'Itinerary *',
                 [
                     'title' => ['label' => 'Title', 'type' => 'text_field'],
                     'content' => ['label' => 'Content', 'type' => 'text_editor'],
@@ -82,13 +82,13 @@ function leo_meta_box_output()
         </div>
 
         <div class="has-border">
-            <?= leo_text_editor('leo_price_table', 'Price Table'); ?>
+            <?= leo_text_editor('leo_price_table', 'Price Table *'); ?>
         </div>
 
         <div class="has-border">
             <?= leo_repeater(
                 'leo_faq',
-                'FAQ',
+                'FAQ *',
                 [
                     'question' => ['label' => 'Question', 'type' => 'text_field'],
                     'answer' => ['label' => 'Answer', 'type' => 'text_editor'],
@@ -138,4 +138,5 @@ function leo_meta_box_output()
         </div>
     </div>
 <?php
+
 }
