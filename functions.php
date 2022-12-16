@@ -6,6 +6,13 @@ function choose_template() {
     return plugin_dir_path( __FILE__ )."template/". $template_id. ".php";
 }
 
+function choose_template_category() {
+    $template_id = trim(esc_attr( get_post_meta( get_the_ID(), 'leo_template', true )));
+    $template_id = $template_id ? $template_id : 'template_cat_1';
+    return plugin_dir_path( __FILE__ )."template/". $template_id. ".php";
+}
+
+
 function reshape_array(array $arr) {
     $result = [];
     for ($i=0; $i < count(array_values($arr)[0]); $i++) {
