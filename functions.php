@@ -1,5 +1,11 @@
 <?php
 
+function choose_template() {
+    $template_id = trim(esc_attr( get_post_meta( get_the_ID(), 'leo_template', true )));
+    $template_id = $template_id ? $template_id : 'template_1';
+    return plugin_dir_path( __FILE__ )."template/". $template_id. ".php";
+}
+
 function reshape_array(array $arr) {
     $result = [];
     for ($i=0; $i < count(array_values($arr)[0]); $i++) {

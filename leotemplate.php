@@ -9,7 +9,7 @@
    License: GPL2
    */
 
-require_once __DIR__.'/init.php';
-require_once __DIR__.'/functions.php';
-require_once __DIR__.'/fields.php';
-require_once __DIR__.'/metabox.php';
+  require_once __DIR__.'/functions.php';
+  require_once __DIR__.'/fields.php';
+  require_once __DIR__.'/metabox.php';
+  require_once __DIR__.'/init.php';

@@ -156,6 +156,8 @@ function leo_get_field() {
 
 // RENDER TEMPLATE
 
+/* 
+
 add_filter('the_content', 'leo_render_theme');
 
 // WORK WITH ELEMENTOR
@@ -176,5 +178,19 @@ function leo_render_theme( $content )
 	}
 }
 
+*/
+
+add_filter('single_template', 'leo_custom_template');
+
+function leo_custom_template($single) {
+
+    /* Checks for single template by post type */
+    if (get_post_type() == tours_config()['slug']) {
+        return choose_template();
+    }
+
+    return $single;
+
+}
 
 ?>
