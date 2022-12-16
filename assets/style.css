@@ -4,22 +4,25 @@
     grid-row-gap: 20px;
 }
 
-.leo_fields {
-    width: 100%;
+.leo_field {
+    padding: 10px;
+    border: 1px solid #00000017;
 }
 
 .leo_box label {
     font-size: 17px;
     font-weight: 700;
     margin-left: 10px;
-    background-color: white;
-    color: #0066cc;
+    background-color: #cc3333;
+    color: white;
     box-shadow: rgb(0 0 0 / 12%) 0px 0px 0px 1px inset;
     border-radius: 0.3em;
-    padding: 0px 1.3em;
+    padding: 5px;    
+    margin-bottom: 5px;
+    display: inline-block;
 }
 
-.leo_box input {
+.leo_box input[type=text] {
     display: inline-block;
     width: 100%;
 }
@@ -36,6 +39,7 @@
 }
 
 .has-border {
+    padding-top: 20px;
     border: 1px solid #0000002b;
     box-shadow: 0px 10px 20px -10px #555555;
 }
@@ -59,3 +63,52 @@
     height: auto;
 }
 
+
+.add-new {
+    background-color: #000000;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.metabox-repeater .action {
+    position: sticky;
+    top: 30px;
+    text-align: center;
+    z-index: 1000;
+}
+
+
+.metabox-repeater {
+    counter-reset: css-counter 0;
+}
+
+.metabox-repeater .tr {
+    counter-increment: css-counter 1;
+}
+.metabox-repeater .tr::before {
+    content: "ID: " counter(css-counter);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.metabox-repeater .tr:nth-child(odd) {
+    background-color: #e9e9e97d;
+}
+.metabox-repeater .tr:nth-child(even) {
+    background-color: #ffc2731f;
+}
+
+
+.group-name {
+    color: #0066cc;
+    font-size: 30px;
+    font-weight: 700;
+    background-color: #d7d7d7;
+    margin-bottom: 5px;
+    position: sticky;
+    position: -webkit-sticky; /* Safari */
+    top: 30px;
+    z-index: 999;
+}

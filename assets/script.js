@@ -86,6 +86,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
             image_frame.open();
 
         });
+
+    /* REMOVE IMAGE */
+    const removeImageButtons = document.querySelectorAll('button.remove-image');
+    for (const removeImageButton of removeImageButtons) {
+        removeImageButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const inputBox = removeImageButton.previousElementSibling.previousElementSibling;
+            const imageBox = inputBox.previousElementSibling;
+
+            inputBox.value = "";
+            imageBox.setAttribute('src', '');
+        });
+    }
+
     }
 
     
@@ -98,7 +112,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         jQuery.get(ajaxurl, data, function(response) {
             if (response.success === true) {
-                jQuery(element).append(response.data.div)
+                const divResponse = response.data.div;
+                
+                jQuery(element).append(divResponse);
+                
+                const respElement = document.createElement('div');
+                respElement.innerHTML = divResponse;
+
+                const wpEditors = respElement.querySelectorAll('textarea.wp-editor-area');
+                for (const wpEditorItem of wpEditors) {
+                    const wpEditorId = wpEditorItem.getAttribute('id');              
+                    tinymce.execCommand( 'mceAddEditor', false, wpEditorId);
+                }
             }
         });
     }

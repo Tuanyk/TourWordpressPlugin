@@ -94,9 +94,9 @@ function leo_single_text_editor(string $field_id, string $field_label, string $c
     $field_name = $child_id ? $field_id."[".$child_id."][]" : $field_id;
     $field_value = $child_id ? $field_value : get_post_meta(get_the_ID(), $field_id, true);
     ?>
-        <div class="leo_field">
+        <div class="leo_field wp_text_editor">
             <label><?= $field_label; ?></label>
-            <?= wp_editor( $field_value, $field_id."_".$child_id."_".wp_unique_id(), ['tinymce'=>true, 'textarea_name'=> $field_name, 'teeny' => false, 'quicktags'=>true]); ?>
+            <?= wp_editor( $field_value, $field_id."_".$child_id."_".substr(md5(rand()), 0, 7), ['tinymce'=>true, 'textarea_name'=> $field_name, 'teeny' => false, 'quicktags'=>true, 'editor_height' => 100]); ?>
         </div>
     <?php
 }
@@ -106,7 +106,7 @@ function leo_single_media_field(string $field_id, string $field_label, string $c
     $field_name = $child_id ? $field_id."[".$child_id."][]" : $field_id;
     $field_value = $child_id ? $field_value : esc_attr(get_post_meta(get_the_ID(), $field_id, true));
     ?>
-        <div class="leo_fields">
+        <div class="leo_field">
             <label for="media"><?= $field_label; ?></label>
             <?php 
                     if( intval( $field_value ) > 0 ) {
@@ -118,6 +118,7 @@ function leo_single_media_field(string $field_id, string $field_label, string $c
                      ?>
             <input type="hidden" name="<?= $field_name; ?>" value="<?php echo esc_attr( $field_value ); ?>" class="regular-text leo_image_id" />
             <input type='button' class="button-primary leo_media_manager_single" value="<?php esc_attr_e('Select a image', 'mytextdomain'); ?>" />
+            <button class="button-primary remove-image">Remove Image...</button>
         </div>
     <?php
 }
@@ -135,9 +136,9 @@ function leo_repeater(string $field_id, string $field_label, array $child_fields
     */
     ?>
         <div class="metabox-repeater">
-            <label><?= $field_label; ?></label>
+            <div class="group-name"><?= $field_label; ?></div>
             <div class="action">
-                <button class="button-primary add-new" data-field-id="<?= $field_id; ?>" data-new-row='<?= json_encode($child_fields); ?>'>Add New...</button>
+                <button class="add-new" data-field-id="<?= $field_id; ?>" data-new-row='<?= json_encode($child_fields); ?>'>Add New...</button>
             </div>
                 <?php 
                     $field_data = get_post_meta(get_the_ID(), $field_id, true);
@@ -149,7 +150,7 @@ function leo_repeater(string $field_id, string $field_label, array $child_fields
                         $field_data = [array_fill_keys(array_keys($child_fields), "")];
                     }
 
-                    foreach ($field_data as $row_value) {
+                    foreach ($field_data as $row_index => $row_value) {
                         ?>
                         <div class="tr">
                             <div class="data">

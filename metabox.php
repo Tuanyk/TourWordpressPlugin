@@ -41,10 +41,7 @@ function leo_meta_box_output()
 {
 ?>
     <div class="leo_box">
-        <div class="has-border">
-            <?= leo_single_text_field('leo_template', 'Template'); ?>
-        </div>
-
+        
         <div class="image-group has-border">
             <?= leo_single_media_field('leo_featured_image', 'Featured Image'); ?>
             <?= leo_single_media_field('leo_slide_image_1', 'Slide Image 1'); ?>
@@ -58,34 +55,19 @@ function leo_meta_box_output()
         <div class="has-border">
             <?= leo_single_text_field('leo_tour_title', 'Title'); ?>
             <?= leo_single_text_field('leo_tour_subtitle', 'Subtitle'); ?>
-            <?= leo_text_editor('leo_tour_description', 'Tour Description'); ?>
+            <?= leo_single_text_editor('leo_tour_description', 'Tour Description'); ?>
         </div>
 
-        <div class="has-border">
-            <?= leo_repeater(
-                'leo_service_box',
-                'Service Box',
-                [
-                    'icon' => ['label' => 'Icon', 'type' => 'text_field'],
-                    'title' => ['label' => 'Title', 'type' => 'text_field'],
-                    'desc' => ['label' => 'Desc', 'type' => 'text_field'],
-                ]
-            ); ?>
-        </div>
-
-        <div class="has-border">
-            <?= leo_text_field('leo_price', 'Price'); ?>
-            <?= leo_text_field('leo_old_price', 'Old Price'); ?>
-            <?= leo_text_field('leo_duration', 'Duration'); ?>
-            <?= leo_text_field('leo_vehicle', 'Vehicle'); ?>
-            <?= leo_text_field('leo_starting_point', 'Starting Point'); ?>
-            <?= leo_text_field('leo_departure_day', 'Departure Day'); ?>
-            <?= leo_text_field('leo_countdown_hour', 'Countdown Hour'); ?>
+        <div class="has-border ">
+            <?= leo_single_text_field('leo_price', 'Price'); ?>
+            <?= leo_single_text_field('leo_old_price', 'Old Price'); ?>
+            <?= leo_single_text_field('leo_duration', 'Duration'); ?>
+            <?= leo_single_text_field('leo_vehicle', 'Vehicle'); ?>
+            <?= leo_single_text_field('leo_departure_day', 'Departure Day'); ?>
             <?= leo_single_text_field('leo_hotline', 'Hotline'); ?>
-            <?= leo_text_field('leo_how_many_star', 'How many star'); ?>
-        </div>
-        <div class="has-border">
-            <?= leo_text_editor('leo_selling_point', 'Selling Point'); ?>
+            <?= leo_single_text_field('leo_starting_point', 'Starting Point'); ?>
+            <?= leo_single_text_field('leo_countdown_hour', 'Countdown Hour'); ?>
+            <?= leo_single_text_field('leo_how_many_star', 'How many star'); ?>
         </div>
 
         <div class="has-border">
@@ -95,17 +77,6 @@ function leo_meta_box_output()
                 [
                     'title' => ['label' => 'Title', 'type' => 'text_field'],
                     'content' => ['label' => 'Content', 'type' => 'text_editor'],
-                ]
-            ); ?>
-        </div>
-
-        <div class="has-border">
-            <?= leo_repeater(
-                'leo_content_beside_itinerary',
-                'Content Beside Itinerary',
-                [
-                    'image' => ['label' => 'Image', 'type' => 'media_field'],
-                    'caption' => ['label' => 'Caption', 'type' => 'text_editor'],
                 ]
             ); ?>
         </div>
@@ -127,12 +98,41 @@ function leo_meta_box_output()
 
         <div class="has-border">
             <?= leo_repeater(
+                'leo_content_beside_itinerary',
+                'Content Beside Itinerary',
+                [
+                    'image' => ['label' => 'Image', 'type' => 'media_field'],
+                    'caption' => ['label' => 'Caption', 'type' => 'text_editor'],
+                ]
+            ); ?>
+        </div>
+
+        <div class="has-border">
+            <?= leo_single_text_field('leo_template', 'Template'); ?>
+        </div>
+
+        <div class="has-border">
+            <?= leo_repeater(
+                'leo_service_box',
+                'Service Box',
+                [
+                    'icon' => ['label' => 'Icon', 'type' => 'text_field'],
+                    'title' => ['label' => 'Title', 'type' => 'text_field'],
+                    'desc' => ['label' => 'Desc', 'type' => 'text_field'],
+                ]
+            ); ?>
+        </div>
+        <div class="has-border">
+            <?= leo_single_text_editor('leo_selling_point', 'Selling Point'); ?>
+        </div>
+        <div class="has-border">
+            <?= leo_repeater(
                 'leo_testimonial',
                 'Testimonial',
                 [
                     'image' => ['label' => 'Image', 'type' => 'media_field'],
-                    'title' => ['label' => 'Title', 'type' => 'text_editor'],
-                    'desc' => ['label' => 'Description', 'type' => 'text_editor'],
+                    'title' => ['label' => 'Title', 'type' => 'text_field'],
+                    'desc' => ['label' => 'Description', 'type' => 'text_field'],
                 ]
             ); ?>
         </div>

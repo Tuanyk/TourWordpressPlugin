@@ -2,23 +2,33 @@
 
 // INITIALIZE CUSTOM POST
 
+function tours_config() {
+    $data = array(
+        'slug' => 'tour',
+        'singular_name' => 'Tour',
+        'name' => 'Tours',
+        'slug_category' => 'tour-category',
+    );
+    return $data;
+}
+
 function tours_init()
 {
     // set up product labels
     $labels = array(
-        'name' => 'Tours',
-        'singular_name' => 'Tour',
-        'add_new' => 'Add New Tour',
-        'add_new_item' => 'Add New Tour',
-        'edit_item' => 'Edit Tour',
-        'new_item' => 'New Tour',
-        'all_items' => 'All Tours',
-        'view_item' => 'View Tour',
-        'search_items' => 'Search Tours',
-        'not_found' =>  'No Tours Found',
-        'not_found_in_trash' => 'No Tours found in Trash',
+        'name' => tours_config()['name'],
+        'singular_name' => tours_config()['singular_name'],
+        'add_new' => 'Add New '.tours_config()['singular_name'],
+        'add_new_item' => 'Add New '.tours_config()['singular_name'],
+        'edit_item' => 'Edit '.tours_config()['singular_name'],
+        'new_item' => 'New '.tours_config()['singular_name'],
+        'all_items' => 'All '.tours_config()['name'],
+        'view_item' => 'View '.tours_config()['singular_name'],
+        'search_items' => 'Search '.tours_config()['name'],
+        'not_found' =>  'No Items Found',
+        'not_found_in_trash' => 'No Items found in Trash',
         'parent_item_colon' => '',
-        'menu_name' => 'Tours',
+        'menu_name' => tours_config()['name'],
     );
 
     // register post type
@@ -29,7 +39,7 @@ function tours_init()
         'show_ui' => true,
         'capability_type' => 'post',
         'hierarchical' => false,
-        'rewrite' => array('slug' => 'tour'),
+        'rewrite' => array('slug' => tours_config()['slug']),
         'query_var' => true,
         'menu_icon' => 'dashicons-randomize',
         'supports' => array(
@@ -38,10 +48,10 @@ function tours_init()
             'author',
         )
     );
-    register_post_type('tour', $args);
+    register_post_type(tours_config()['slug'], $args);
 
     // register taxonomy
-    register_taxonomy('tour_category', 'tour', array('hierarchical' => true, 'label' => 'Tour Categories', 'query_var' => true, 'rewrite' => array('slug' => 'tour-category')));
+    register_taxonomy( tours_config()['slug_category'], tours_config()['slug'], array('hierarchical' => true, 'label' => tours_config()['singular_name'].' Categories', 'query_var' => true, 'rewrite' => array('slug' => tours_config()['slug_category'])));
 }
 
 add_action('init', 'tours_init');
@@ -50,7 +60,7 @@ add_action('init', 'tours_init');
 
 function leo_meta_box()
 {
-    add_meta_box('tour-info', 'Tour Info', 'leo_meta_box_output', 'tour');
+    add_meta_box('tour-info', 'Tour Info', 'leo_meta_box_output', tours_config()['slug']);
 }
 add_action('add_meta_boxes', 'leo_meta_box');
 
@@ -153,7 +163,7 @@ add_filter('the_content', 'leo_render_theme');
 
 function leo_render_theme( $content )
 {
-    if (get_post_type() == 'tour') {
+    if (get_post_type() == tours_config()['slug']) {
         ob_start();
         require_once plugin_dir_path( __FILE__ ). 'template.php';
         $content = ob_get_contents();
