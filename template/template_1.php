@@ -34,6 +34,7 @@
             font-weight: 700;
             line-height: 1.2em;
             text-align: center;
+            margin: 20px 0;
         }
         /* CSS For Featured Gallery */
 

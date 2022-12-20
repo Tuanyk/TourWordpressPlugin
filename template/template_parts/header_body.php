@@ -49,9 +49,10 @@
 
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             font-family: 'Inter', sans-serif;
+            position: relative;
         }
 
         /* Make logo not so big */
@@ -141,12 +142,12 @@
             color: var(--hotline-color);
             font-weight: 700;
             font-size: 22px;
-            padding: 10px 5px;
+            padding: 5px 5px 0 5px;
             border-radius: 10px;
         }
 
         nav .icon {
-            margin-right: 5px;
+            display: none;
         }
 
         nav .icon svg {
@@ -161,6 +162,9 @@
 
         /* MOBILE */
         @media (max-width: 767px) {
+            nav {
+                justify-content: space-between;
+            }
             nav .main-menu {
                 display: none;
             }
@@ -173,7 +177,9 @@
             nav .phone-number {
                 display: none;
             }
-
+            nav .icon {
+                display: block;
+            }
             nav .hotline {
                 order: 1;
                 padding: 5px 5px 0 5px;
