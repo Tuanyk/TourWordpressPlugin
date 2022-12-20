@@ -3,7 +3,7 @@
 function tours_config()
 {
     $data = array(
-        'slug' => 'tour',
+        'slug' => 'ptour',
         'singular_name' => 'Tour',
         'name' => 'Tours',
     );
