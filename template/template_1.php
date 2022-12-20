@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once __DIR__.'/template_parts/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha512-0S+nbAYis87iX26mmj/+fWt1MmaKCv80H+Mbo+Ne7ES4I6rxswpfnC6PxmLiw33Ywj2ghbtTw0FkLbMWqh4F7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
     <style>
 
         body {
@@ -543,11 +535,9 @@
         }
         
     </style>
-    <?php wp_head(); ?>
-</head>
+    
+<?php require_once __DIR__.'/template_parts/header_body.php'; ?>
 
-<body>
-    <?php wp_body_open(); ?>
 
     <h1 class="tour-title"><?= leo_field('leo_tour_title'); ?></h1>
     <section id="leo_images">
@@ -717,7 +707,5 @@
         document.querySelectorAll("#lichtrinhtour .day-title")[1].parentElement.classList.toggle('active');
     </script>
 
-    <?php wp_footer(); ?>
-</body>
 
-</html>
+<?php require_once __DIR__.'/template_parts/footer.php'; ?>
