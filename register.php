@@ -204,4 +204,37 @@ function leo_custom_template($single)
     return $single;
 }
 
-?>
+
+// SETTING MENU
+
+function leotemplate_register_settings() {
+    
+    add_option( 'leosetting_hotline', 'Your Hotline Here!');
+
+    register_setting( 'leotemplate_options_group', 'leosetting_hotline');
+ }
+ add_action( 'admin_init', 'leotemplate_register_settings' );
+
+ function leotemplate_register_options_page() {
+    add_options_page('LeoTemplate Options', 'LeoTemplate Settings', 'manage_options', 'leotemplate_settings', 'leotemplate_options_page');
+  }
+  add_action('admin_menu', 'leotemplate_register_options_page');
+
+  function leotemplate_options_page()
+  {
+  ?>
+    <div>
+        <h2>LeoTemplate Settings Page</h2>
+        <form method="post" action="options.php">
+            <?php settings_fields( 'leotemplate_options_group' ); ?>
+
+            <label for="leosetting_hotline">HotLine</label>
+            <input type="text" id="leosetting_hotline" name="leosetting_hotline" value="<?php echo get_option('leosetting_hotline'); ?>" />
+
+            <?php submit_button(); ?>
+        </form>
+    </div>
+  <?php
+  } 
+  
+  ?>

@@ -148,6 +148,7 @@ function tour_category_custom_fields(): array
         'leo_description' => 'text_editor',
         'leo_bgcolor' => 'text_field',
         'leo_posts_list' => 'text_field',
+        'leo_title' => 'text_field',
     ];
     return $fields;
 }
@@ -157,7 +158,10 @@ function leo_category_metabox_output()
 ?>
     <div class="leo_box">
         <div class="has-border">
-            <?= leo_single_text_field('leo_posts_list', 'Posts List ID (seperate by comma)'); ?>
+            <?= leo_single_text_field('leo_title', 'Title *'); ?>
+        </div>
+        <div class="has-border">
+            <?= leo_single_text_field('leo_posts_list', 'Posts List ID (seperate by comma) *'); ?>
         </div>
         <div class="has-border">
             <?= leo_single_media_field('leo_featured_image', 'Featured Image'); ?>
@@ -170,10 +174,10 @@ function leo_category_metabox_output()
         <div class="has-border">
             <?= leo_single_text_field('leo_bgcolor', 'Background Color'); ?>
         </div>
-
         <div class="has-border">
             <?= leo_single_text_field('leo_template', 'Template'); ?>
         </div>
+
     </div>
 <?php
 }
