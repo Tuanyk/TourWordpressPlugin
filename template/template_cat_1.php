@@ -114,6 +114,7 @@
         font-weight: 700;
         color: #224477;
         padding: 10px 10px 0 10px;
+        height: 3em;
     }
     .posts-list article .boxinfo {
         text-align: center;
