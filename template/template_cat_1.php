@@ -123,7 +123,7 @@
     .posts-list article .boxinfo .rightbox {
         display: inline;
         border-radius: 5px;
-        border: 1px solid var(--category-color);
+        border: 1px solid #224477;
         font-size: 14px;
         font-family: 'Averta', sans-serif;
         font-weight: 600;
