@@ -210,8 +210,10 @@ function leo_custom_template($single)
 function leotemplate_register_settings() {
     
     add_option( 'leosetting_hotline', 'Your Hotline Here!');
+    add_option( 'leosetting_categorydefaultcolor', '#cc3333');
 
     register_setting( 'leotemplate_options_group', 'leosetting_hotline');
+    register_setting( 'leotemplate_options_group', 'leosetting_categorydefaultcolor');
  }
  add_action( 'admin_init', 'leotemplate_register_settings' );
 
@@ -230,6 +232,9 @@ function leotemplate_register_settings() {
 
             <label for="leosetting_hotline">HotLine</label>
             <input type="text" id="leosetting_hotline" name="leosetting_hotline" value="<?php echo get_option('leosetting_hotline'); ?>" />
+
+            <label for="leosetting_categorydefaultcolor">Default Color for Category</label>
+            <input type="text" id="leosetting_categorydefaultcolor" name="leosetting_categorydefaultcolor" value="<?php echo get_option('leosetting_categorydefaultcolor'); ?>" />
 
             <?php submit_button(); ?>
         </form>

@@ -172,7 +172,7 @@ function leo_category_metabox_output()
         </div>
 
         <div class="has-border">
-            <?= leo_single_text_field('leo_bgcolor', 'Background Color'); ?>
+            <?= leo_single_text_field('leo_bgcolor', 'Background Color #cc3333 #224477 #0066cc'); ?>
         </div>
         <div class="has-border">
             <?= leo_single_text_field('leo_template', 'Template'); ?>
