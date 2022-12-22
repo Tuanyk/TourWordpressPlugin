@@ -178,6 +178,7 @@
         font-family: 'Averta', sans-serif;
         font-size: 16px;
         font-weight: 700;
+        border: 1px solid #224477;
     }
     .posts-list article .pricebox button.detail:hover { 
         background-color: #224477;
