@@ -69,6 +69,10 @@ function leo_meta_box_output()
             <?= leo_single_text_field('leo_countdown_hour', 'Countdown Hour'); ?>
             <?= leo_single_text_field('leo_how_many_star', 'How many star'); ?>
         </div>
+        
+        <div class="has-border">
+            <?= leo_single_text_editor('leo_selling_point', 'Selling Point *'); ?>
+        </div>
 
         <div class="has-border">
             <?= leo_repeater(
@@ -122,9 +126,7 @@ function leo_meta_box_output()
                 ]
             ); ?>
         </div>
-        <div class="has-border">
-            <?= leo_single_text_editor('leo_selling_point', 'Selling Point'); ?>
-        </div>
+
         <div class="has-border">
             <?= leo_repeater(
                 'leo_testimonial',

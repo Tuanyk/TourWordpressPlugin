@@ -12,6 +12,8 @@
         text-align: center;
         max-width: 1200px;
         margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     section.info .section-title {
@@ -200,16 +202,20 @@
 
 <section class="info">
     <h1 class="section-title"><?= leo_field('leo_title'); ?></h1>
+    <?php if(leo_field('leo_featured_image')) { ?>
     <div class="description">
         <div class="image"><img src="<?= wp_get_attachment_url(leo_field('leo_featured_image')); ?>" alt=""></div>
         <div class="text"><?= leo_field('leo_description', false); ?></div>
     </div>
+    <?php } ?>
 
 </section>
 
 <section class="posts-list">
     <div class="list">
-        <?php $posts_id = explode(',', str_replace(' ', '', leo_field('leo_posts_list')));
+        <?php 
+        if (leo_field('leo_posts_list')) {
+            $posts_id = explode(',', str_replace(' ', '', leo_field('leo_posts_list')));
             foreach ($posts_id as $post_id) {
                 $p_url = get_permalink($post_id);
                 $p_featured_image = wp_get_attachment_url(get_post_meta($post_id, 'leo_featured_image', true));
@@ -226,44 +232,50 @@
                 $p_price = esc_attr(get_post_meta($post_id, 'leo_price', true));
             ?>
 
-            <article class="item">
-                <a href="<?= $p_url; ?>">
-                    <div class="image">
-                        <img src="<?= $p_featured_image; ?>" alt="">
-                    </div>
-                </a>
-                <div class="info">
+                <article class="item">
                     <a href="<?= $p_url; ?>">
-                        <h3 class="title"><?= $p_title; ?></h3>
+                        <div class="image">
+                            <img src="<?= $p_featured_image; ?>" alt="">
+                        </div>
                     </a>
-                    <div class="boxinfo">
-                        <div class="rightbox">
-                            <span>Thời gian</span>
-                            <span><?= $p_duration; ?></span>
-                        </div>
-
-                    </div>
-                    <div class="tourinfo">
-                        <div class="item">
-                            <span class="icon"><i aria-hidden="true" class="fas fa-plane-departure"></i></span><span class="vehicle"><?= $p_vehicle; ?></span>
-                        </div>
-                        <div class="item">
-                            <span class="icon"><i aria-hidden="true" class="fas fa-calendar-alt"></i></span><span class="departure-day"><?= $p_departure_day; ?></span>
-                        </div>
-                    </div>
-                    <div class="pricebox">
-                        <span class="old-price"><?= $p_old_price; ?></span>
+                    <div class="info">
                         <a href="<?= $p_url; ?>">
-                            <button class="detail">Chi tiết Tour</button>
+                            <h3 class="title"><?= $p_title; ?></h3>
                         </a>
-                    </div>
-                </div>
-                <a href="<?= $p_url; ?>">
-                    <div class="book-tour"><?= $p_price; ?></div>
-                </a>
-            </article>
+                        <div class="boxinfo">
+                            <div class="rightbox">
+                                <span>Thời gian</span>
+                                <span><?= $p_duration; ?></span>
+                            </div>
 
-            <?php } ?>
+                        </div>
+                        <div class="tourinfo">
+                            <div class="item">
+                                <span class="icon"><i aria-hidden="true" class="fas fa-plane-departure"></i></span><span class="vehicle"><?= $p_vehicle; ?></span>
+                            </div>
+                            <div class="item">
+                                <span class="icon"><i aria-hidden="true" class="fas fa-calendar-alt"></i></span><span class="departure-day"><?= $p_departure_day; ?></span>
+                            </div>
+                        </div>
+                        <div class="pricebox">
+                            <span class="old-price"><?= $p_old_price; ?></span>
+                            <a href="<?= $p_url; ?>">
+                                <button class="detail">Chi tiết Tour</button>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="<?= $p_url; ?>">
+                        <div class="book-tour"><?= $p_price; ?></div>
+                    </a>
+                </article>
+
+            <?php }}
+        else {
+            ?>
+            <h3>Chương trình Tour hiện đang được cập nhật, quý khách vui lòng quay lại sau.</h3>     <p>TRÂN TRỌNG CẢM ƠN QUÝ KHÁCH!</p>
+            <?php
+        }
+            ?>
     </div>
 </section>
 
