@@ -299,7 +299,9 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="<?= wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full')[0]; ?>" alt="">
+                <a href="/">
+                    <img src="<?= wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full')[0]; ?>" alt="">
+                </a>
             </div>
             <div class="main-menu">
                 <?php wp_nav_menu(array('container' => '')); ?>
