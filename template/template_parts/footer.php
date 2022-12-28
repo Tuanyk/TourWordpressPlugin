@@ -43,6 +43,8 @@
     section.footer .subscribe form button.submit {
         background-color: #cc3333;
         padding: 0;
+        color: white;
+        padding: 10px 0;
     }
     section.footer .subscribe form button.submit:hover {
         background-color: #1c1c1c;
