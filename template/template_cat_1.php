@@ -89,7 +89,6 @@
     .posts-list .list {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
     }
     .posts-list article {
         width: 350px;
