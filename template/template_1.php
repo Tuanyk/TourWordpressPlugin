@@ -30,7 +30,11 @@
             color: #cc3333;
             font-weight: 700;
         }
-
+        @media screen and (max-width: 767px) {
+            section .section-title {
+                font-size: 25px;
+            }
+        }
         h1.tour-title {
             color: #CC3333;
             font-size: 25px;
@@ -152,13 +156,23 @@
             width: 350px;
         }
 
-
+        @media (max-width: 767px) { 
+            .main-content .left {
+                width: 100%;
+                margin-right: 0;
+            }
+            .main-content .right {
+                width: 100%;
+            }
+        }
         .tour-description {
             height: 150px;
             overflow-y: auto;
             overflow-x: hidden;
             padding: 20px 20px 20px 30px;
             color: #222222;
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
         .tour-description::-webkit-scrollbar {
@@ -190,6 +204,13 @@
             position: sticky;
             top: 30px;
         }
+
+        @media (max-width: 767px) {
+            #sticky-price-div {
+                margin: 10px 20px;
+            }
+         }
+
 
         #sticky-price-div h3 {
             padding: 20px 0;
@@ -265,6 +286,7 @@
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 30px;
+            margin-left: 30px;
         }
 
         #service_box .box {
@@ -331,6 +353,10 @@
             }
         }
 
+        .itinerary {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
         .itinerary .content {
             padding: 20px 30px 20px 30px;
         }
@@ -348,6 +374,12 @@
             margin-bottom: 0;
         }
 
+        @media (max-width: 767px) {
+            .itinerary .title-description h2 {
+                font-size: 20px;
+            }
+        }
+
         .itinerary img {
             border-style: none;
             width: 100%;
@@ -359,7 +391,13 @@
             padding-left: 20px;
             position: relative;
         }
-
+        @media (max-width: 767px) {
+            .itinerary .schedule-section {
+                margin-left: 0px;
+                padding-left: 0px;
+                position: relative;
+            }
+        }
         .itinerary .schedule-section::before {
             content: "";
             position: absolute;
@@ -367,6 +405,12 @@
             left: 0;
             height: calc(100% + 4px);
             border-left: 1px dashed #2d4271;
+        }
+
+        @media (max-width: 767px) {
+            .itinerary .schedule-section::before {
+                left: -15px;
+            }
         }
 
         .itinerary .schedule-section .day-detail {
