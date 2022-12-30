@@ -30,3 +30,9 @@ function leo_field(string $field, bool $esc_attr = true) {
     $field_data = $esc_attr ? esc_attr($field_data) : $field_data;
     return $field_data;
 }
+
+function get_hotline(bool $remove_space = false) {
+    $phone_number = leo_field('leo_hotline') ? leo_field('leo_hotline') : get_option('leosetting_hotline');
+    if ($remove_space) $phone_number = str_replace(" ", "", $phone_number);
+    return $phone_number;
+}

@@ -132,7 +132,413 @@
     <span class="copyright">© <?= date('Y'); ?> All rights reserved​</span>
     <span class="author">Made with ❤ by Pantravel</span>
 </section>
+<section class="phone-call">
+    <style>
+        .call-now-button {
+            display: none;
+            z-index: 9999;
+            clear: both;
+            margin: 0 auto;
+            position: fixed;
+            border-radius: 50px;
+        }
 
+        .call-now-button div {
+            display: flex;
+        }
+
+        .call-now-button div p {
+            color: #fff;
+            display: table;
+            padding: 10px;
+            border-radius: 21px;
+            height: 34px;
+            line-height: 14px;
+            font-size: 14px;
+            margin: 8px 5px 8px 50px;
+            text-transform: uppercase;
+            font-weight: normal;
+            text-align: center;
+            box-sizing: content-box;
+            text-decoration: none !important;
+            box-sizing: border-box;
+        }
+
+        .quick-alo-ph-circle.active {
+            width: 130px;
+            height: 130px;
+            top: -40px;
+            left: -40px;
+            position: absolute;
+            background-color: transparent;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid rgba(30, 30, 30, 0.4);
+            opacity: 1;
+            -webkit-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+            -moz-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+            -ms-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+            -o-animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+            animation: quick-alo-circle-anim 1.2s infinite ease-in-out;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+
+        .quick-alo-ph-circle-fill.active {
+            width: 80px;
+            height: 80px;
+            top: -15px;
+            left: -15px;
+            position: absolute;
+            background-color: #000;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            -webkit-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -moz-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -ms-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -o-animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            animation: quick-alo-circle-fill-anim 2.3s infinite ease-in-out;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+
+        .quick-alo-ph-img-circle.shake {
+            width: 50px;
+            height: 50px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            background: url('<?= dirname(dirname(plugin_dir_url(__FILE__))) ; ?>/assets/images/quick-call-button.png') no-repeat center center;
+            -webkit-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -moz-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -ms-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -o-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+
+        .quick-alo-phone-img-circle.shake {
+            width: 50px;
+            height: 50px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            background: url('<?= dirname(dirname(plugin_dir_url(__FILE__))) ; ?>/assets/images/quick-call-button-phone.png') no-repeat center center;
+            -webkit-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -moz-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -ms-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -o-animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            animation: quick-alo-circle-img-anim 1s infinite ease-in-out;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+
+        .quick-alo-ph-img-circle.notshake {
+            width: 50px;
+            height: 50px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            background: url(/images//quick-call-button.png) no-repeat center center;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+
+        .quick-alo-phone-img-circle.notshake {
+            width: 50px;
+            height: 50px;
+            top: 0;
+            left: 0;
+            position: absolute;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            border-radius: 100%;
+            border: 2px solid transparent;
+            opacity: 1;
+            background: url(/images//quick-call-button-phone.png) no-repeat center
+            center;
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+        }
+
+        @-moz-keyframes quick-alo-circle-anim {
+            0% {
+            -moz-transform: rotate(0) scale(0.5) skew(1deg);
+            opacity: 0.1;
+            -moz-opacity: 0.1;
+            -webkit-opacity: 0.1;
+            -o-opacity: 0.1;
+            }
+            30% {
+            -moz-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.5;
+            -moz-opacity: 0.5;
+            -webkit-opacity: 0.5;
+            -o-opacity: 0.5;
+            }
+            100% {
+            -moz-transform: rotate(0) scale(1) skew(1deg);
+            opacity: 0.6;
+            -moz-opacity: 0.6;
+            -webkit-opacity: 0.6;
+            -o-opacity: 0.1;
+            }
+        }
+        @-webkit-keyframes quick-alo-circle-anim {
+            0% {
+            -webkit-transform: rotate(0) scale(0.5) skew(1deg);
+            -webkit-opacity: 0.1;
+            }
+            30% {
+            -webkit-transform: rotate(0) scale(0.7) skew(1deg);
+            -webkit-opacity: 0.5;
+            }
+            100% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            -webkit-opacity: 0.1;
+            }
+        }
+        @-o-keyframes quick-alo-circle-anim {
+            0% {
+            -o-transform: rotate(0) kscale(0.5) skew(1deg);
+            -o-opacity: 0.1;
+            }
+            30% {
+            -o-transform: rotate(0) scale(0.7) skew(1deg);
+            -o-opacity: 0.5;
+            }
+            100% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            -o-opacity: 0.1;
+            }
+        }
+        @-moz-keyframes quick-alo-circle-fill-anim {
+            0% {
+            -moz-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.2;
+            }
+            50% {
+            -moz-transform: rotate(0) -moz-scale(1) skew(1deg);
+            opacity: 0.2;
+            }
+            100% {
+            -moz-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.2;
+            }
+        }
+        @-webkit-keyframes quick-alo-circle-fill-anim {
+            0% {
+            -webkit-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.2;
+            }
+            50% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            opacity: 0.2;
+            }
+            100% {
+            -webkit-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.2;
+            }
+        }
+        @-o-keyframes quick-alo-circle-fill-anim {
+            0% {
+            -o-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.2;
+            }
+            50% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            opacity: 0.2;
+            }
+            100% {
+            -o-transform: rotate(0) scale(0.7) skew(1deg);
+            opacity: 0.2;
+            }
+        }
+        @-moz-keyframes quick-alo-circle-img-anim {
+            10% {
+            transform: rotate(0) scale(1) skew(1deg);
+            }
+            10% {
+            -moz-transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            20% {
+            -moz-transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            30% {
+            -moz-transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            40% {
+            -moz-transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            50% {
+            -moz-transform: rotate(0) scale(1) skew(1deg);
+            }
+            100% {
+            -moz-transform: rotate(0) scale(1) skew(1deg);
+            }
+        }
+        @-webkit-keyframes quick-alo-circle-img-anim {
+            0% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            }
+            10% {
+            -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            20% {
+            -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            30% {
+            -webkit-transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            40% {
+            -webkit-transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            50% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            }
+            100% {
+            -webkit-transform: rotate(0) scale(1) skew(1deg);
+            }
+        }
+        @-o-keyframes quick-alo-circle-img-anim {
+            0% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            }
+            10% {
+            -o-transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            20% {
+            -o-transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            30% {
+            -o-transform: rotate(-25deg) scale(1) skew(1deg);
+            }
+            40% {
+            -o-transform: rotate(25deg) scale(1) skew(1deg);
+            }
+            50% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            }
+            100% {
+            -o-transform: rotate(0) scale(1) skew(1deg);
+            }
+        }
+        @media screen and (max-width: 2500px) {
+            .call-now-button {
+            display: flex !important;
+            background: #bf2233;
+            }
+            .quick-call-button {
+            display: block !important;
+            }
+        }
+        @media screen and (min-width: px) {
+            .call-now-button .call-text {
+            display: none !important;
+            }
+        }
+        @media screen and (max-width: 1024px) and (min-width: px) {
+            .call-now-button .call-text {
+            display: none !important;
+            }
+        }
+        @media screen and (max-width: 680px) {
+            .call-now-button .call-text {
+            display: none !important;
+            }
+        }
+        .call-now-button {
+            top: 80%;
+        }
+
+        .call-now-button {
+            left: 3%;
+        }
+
+        .call-now-button {
+            background: #bf2233;
+        }
+
+        .call-now-button div a .quick-alo-ph-img-circle,
+        .call-now-button div a .quick-alo-phone-img-circle {
+            background-color: #bf2233;
+        }
+
+        .call-now-button .call-text {
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <div class="quick-call-button"></div>
+    <div class="call-now-button" id="draggable">
+    <div>
+        <p class="call-text">Hỗ trợ tư vấn</p>
+        <a href="tel:<?= get_hotline(true); ?>" id="quickcallbutton" title="Call Now">
+        <div class="quick-alo-ph-circle active"></div>
+        <div class="quick-alo-ph-circle-fill active"></div>
+        <div class="quick-alo-ph-img-circle shake"></div>
+        </a>
+    </div>
+    </div>
+</section>
+<section class="zalo-chat">
+    <style>
+        #zalo-sticky {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+    <a href="<?= get_option('zalo_official'); ?>" id="zalo-sticky">
+        <img src="<?= dirname(dirname(plugin_dir_url(__FILE__))) ; ?>/assets/images/zalochat.png" alt="">
+    </a>
+</section>
 <?php wp_footer(); ?>
 
 </body>

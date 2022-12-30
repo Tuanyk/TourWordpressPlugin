@@ -251,11 +251,16 @@
         #sticky-price-div .info span {
             color: #222222;
             font-size: 17px;
+            font-weight: 700;
         }
 
         #sticky-price-div .info i {
             color: #0066cc;
             font-size: 20px;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            
         }
 
         #sticky-price-div .info>div {
@@ -725,7 +730,7 @@
                 </div>
                 <button>ĐẶT CHỖ NGAY</button>
 
-                <a href="tel:<?= leo_field('leo_hotline'); ?>" class="hotline">
+                <a href="tel:<?= get_hotline(true); ?>" class="hotline">
                     <i aria-hidden="true" class="fas fa-phone-alt"></i><span><?= leo_field('leo_hotline'); ?></span>
                 </a>
             </section>

@@ -211,9 +211,11 @@ function leotemplate_register_settings() {
     
     add_option( 'leosetting_hotline', 'Your Hotline Here!');
     add_option( 'leosetting_categorydefaultcolor', '#cc3333');
+    add_option( 'zalo_official', 'https://zalo.me/671676185230710826');
 
     register_setting( 'leotemplate_options_group', 'leosetting_hotline');
     register_setting( 'leotemplate_options_group', 'leosetting_categorydefaultcolor');
+    register_setting( 'leotemplate_options_group', 'zalo_official');
  }
  add_action( 'admin_init', 'leotemplate_register_settings' );
 
@@ -235,6 +237,9 @@ function leotemplate_register_settings() {
 
             <label for="leosetting_categorydefaultcolor">Default Color for Category</label>
             <input type="text" id="leosetting_categorydefaultcolor" name="leosetting_categorydefaultcolor" value="<?php echo get_option('leosetting_categorydefaultcolor'); ?>" />
+
+            <label for="zalo_official">Zalo Official Account Link</label>
+            <input type="text" id="zalo_official" name="zalo_official" value="<?php echo get_option('zalo_official'); ?>" />
 
             <?php submit_button(); ?>
         </form>
