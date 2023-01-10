@@ -117,9 +117,12 @@
                 position: relative;
             }
 
-            #leo_images>div:nth-child(3),
+            #leo_images>div:nth-child(3) {
+                display: none;
+            }
             #leo_images>div:nth-child(4) {
                 grid-row-end: span 2;
+                grid-column-end: span 2;
             }
 
             #leo_images>div:nth-child(3)>div,
@@ -127,7 +130,6 @@
                 overflow: hidden;
                 padding-block-start: 100%;
                 position: relative;
-                padding-top: calc(100% / (1 / 2));
             }
         }
 
