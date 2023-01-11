@@ -68,10 +68,9 @@
     }
 
     .posts-list .list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 50px;
-        justify-content: space-evenly;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     section.posts-list p.search-result-desc {
         text-align: center;
@@ -79,6 +78,8 @@
         margin-bottom: 30px;
     }
     .posts-list article {
+        width: 350px;
+        margin: 20px;
         border-radius: 10px;
         border: 1px solid var(--category-color);
         transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
