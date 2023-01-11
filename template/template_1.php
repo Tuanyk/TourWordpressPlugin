@@ -1,7 +1,6 @@
 <?php require_once __DIR__.'/template_parts/header.php'; ?>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha512-0S+nbAYis87iX26mmj/+fWt1MmaKCv80H+Mbo+Ne7ES4I6rxswpfnC6PxmLiw33Ywj2ghbtTw0FkLbMWqh4F7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="<?= dirname(plugin_dir_url(__FILE__)); ?>/assets/font.css" />
 
     <style>
 
@@ -317,7 +316,7 @@
             height: 50px;
             border-radius: 50%;
             background: #0066cc;
-            box-shadow: 0 0 0 4px white, 0 0 0 5px red;
+            box-shadow: 0 0 0 4px white, 0 0 0 5px #0066cc;
         }
 
 
