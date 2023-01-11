@@ -201,9 +201,11 @@
 
 <section class="info">
     <h2 class="title"><?= leo_field('leo_info_title'); ?></h2>
+    <?php if (leo_field('leo_description', false)) { ?>
     <div class="description">
         <?= wpautop(leo_field('leo_description', false)); ?>
     </div>
+    <?php } ?>
 </section>
 
 <section class="posts-list">
