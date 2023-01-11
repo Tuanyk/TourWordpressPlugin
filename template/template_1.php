@@ -220,8 +220,15 @@
             font-weight: bold;
             line-height: 1.5em;
             text-align: center;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
-
+        #sticky-price-div .sub-title {
+            text-transform: uppercase;
+            color: #0066CC;
+            font-weight: bold;
+            font-size: 25px;
+        }
         #sticky-price-div .old-price {
             text-decoration: line-through;
             color: #222222;
@@ -718,6 +725,7 @@
         <div class="form right">
             <section id="sticky-price-div">
                 <h3><?= leo_field('leo_tour_title'); ?></h3>
+                <span class="sub-title"><?= leo_field('leo_tour_subtitle'); ?></span>
                 <div>
                     <span class="old-price"><?= leo_field('leo_old_price'); ?></span>
                 </div>
