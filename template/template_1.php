@@ -326,6 +326,7 @@
 
         #service_box .box .desc_box {
             padding-left: 20px;
+            width: calc(100% - 50px);
         }
 
         #service_box .box .desc_box .title {
@@ -342,6 +343,9 @@
             font-size: 15px;
             color: #555555;
             font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         @media only screen and (max-width: 767px) {
