@@ -534,6 +534,8 @@
 
         #faq {
             width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         #faq div:not(.faq-answer) {
