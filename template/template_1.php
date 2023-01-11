@@ -519,7 +519,7 @@
         }
 
         #price-table table {
-            width: 100%;
+            width: 100% !important;
             table-layout: fixed;
         }
 
