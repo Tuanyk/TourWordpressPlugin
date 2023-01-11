@@ -157,11 +157,10 @@
     }
     .posts-list article .pricebox {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         font-family: 'Averta', sans-serif;
-        margin-bottom: 20px;
-        margin-top: 20px;
+        margin: 20px;
     }
     .posts-list article .pricebox .old-price {
         text-decoration: line-through;
