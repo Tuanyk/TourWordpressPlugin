@@ -137,6 +137,8 @@
     }
     .posts-list article .tourinfo .item {
         border-bottom: 1px solid black;
+        width: 90%;
+        display: flex;
     }
     .posts-list article .tourinfo .icon {
         display: inline-block;
@@ -146,6 +148,12 @@
     .posts-list article .tourinfo .icon i {
         color: #0066cc;
         font-size: 15px;
+    }
+    .posts-list article .tourinfo .departure-day {
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .posts-list article .pricebox {
         display: flex;
