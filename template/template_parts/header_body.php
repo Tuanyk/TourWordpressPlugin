@@ -1,7 +1,4 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<?= dirname(dirname(plugin_dir_url(__FILE__))); ?>/assets/font.css" />
 
     <style>
         /* Font for whole site */
@@ -42,7 +39,7 @@
             margin: 0;
             padding: 0;
             background-color: white !important;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Averta', sans-serif ;
         }
 
         /* Center nav bar and having better spaces between elements */
@@ -51,8 +48,8 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            font-family: 'Inter', sans-serif;
             position: relative;
+            font-family: 'Averta', sans-serif ;
         }
 
         /* Make logo not so big */
@@ -79,7 +76,7 @@
         }
 
         nav .main-menu a {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Averta', sans-serif ;
             font-weight: 600;
             display: inline-block;
             text-decoration: none;

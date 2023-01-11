@@ -147,6 +147,7 @@ function tour_category_custom_fields(): array
     $fields = [
         'leo_template' => 'text_field',
         'leo_featured_image' => 'media_field',
+        'leo_info_title' => 'text_editor',
         'leo_description' => 'text_editor',
         'leo_bgcolor' => 'text_field',
         'leo_posts_list' => 'text_field',
@@ -170,6 +171,7 @@ function leo_category_metabox_output()
         </div>
 
         <div class="has-border">
+            <?= leo_single_text_field('leo_info_title', 'Title'); ?>
             <?= leo_single_text_editor('leo_description', 'Description'); ?>
         </div>
 
