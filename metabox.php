@@ -5,6 +5,7 @@ function tours_custom_fields(): array
 {
     $fields = [
         'leo_template' => 'text_field',
+        'leo_tour_code' => 'text_field',
         'leo_hotline' => 'text_field',
         'leo_tour_title' => 'text_field',
         'leo_tour_subtitle' => 'text_field',
@@ -41,6 +42,10 @@ function leo_meta_box_output()
 {
 ?>
     <div class="leo_box">
+        
+        <div class="has-border">
+            <?= leo_single_text_field('leo_tour_code', 'Tourcode *'); ?>
+        </div>
         
         <div class="image-group has-border">
             <?= leo_single_media_field('leo_featured_image', 'Featured Image'); ?>
