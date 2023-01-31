@@ -150,7 +150,6 @@
 
         .main-content .left {
             width: 900px;
-            margin-right: 20px;
         }
 
         .main-content .right {

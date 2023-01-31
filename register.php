@@ -100,7 +100,7 @@ function leo_save_meta_box($post_id)
         $post_id = $parent_id;
     }
 
-    $fields = array_merge( tours_custom_fields(), tour_category_custom_fields() );
+    $fields = array_merge(tours_custom_fields(), tour_category_custom_fields());
 
     foreach ($fields as $field => $field_type) {
         if (array_key_exists($field, $_POST)) {
@@ -170,7 +170,7 @@ function leo_get_field()
             <div class="btn"><button class="button-primary remove-current">Remove</button></div>
         </div>
 
-<?php
+    <?php
         $content = ob_get_contents();
         ob_end_clean();
         $data = array(
@@ -207,30 +207,32 @@ function leo_custom_template($single)
 
 // SETTING MENU
 
-function leotemplate_register_settings() {
-    
-    add_option( 'leosetting_hotline', 'Your Hotline Here!');
-    add_option( 'leosetting_categorydefaultcolor', '#cc3333');
-    add_option( 'zalo_official', 'https://zalo.me/671676185230710826');
+function leotemplate_register_settings()
+{
 
-    register_setting( 'leotemplate_options_group', 'leosetting_hotline');
-    register_setting( 'leotemplate_options_group', 'leosetting_categorydefaultcolor');
-    register_setting( 'leotemplate_options_group', 'zalo_official');
- }
- add_action( 'admin_init', 'leotemplate_register_settings' );
+    add_option('leosetting_hotline', 'Your Hotline Here!');
+    add_option('leosetting_categorydefaultcolor', '#cc3333');
+    add_option('zalo_official', 'https://zalo.me/671676185230710826');
 
- function leotemplate_register_options_page() {
+    register_setting('leotemplate_options_group', 'leosetting_hotline');
+    register_setting('leotemplate_options_group', 'leosetting_categorydefaultcolor');
+    register_setting('leotemplate_options_group', 'zalo_official');
+}
+add_action('admin_init', 'leotemplate_register_settings');
+
+function leotemplate_register_options_page()
+{
     add_options_page('LeoTemplate Options', 'LeoTemplate Settings', 'manage_options', 'leotemplate_settings', 'leotemplate_options_page');
-  }
-  add_action('admin_menu', 'leotemplate_register_options_page');
+}
+add_action('admin_menu', 'leotemplate_register_options_page');
 
-  function leotemplate_options_page()
-  {
-  ?>
+function leotemplate_options_page()
+{
+    ?>
     <div>
         <h2>LeoTemplate Settings Page</h2>
         <form method="post" action="options.php">
-            <?php settings_fields( 'leotemplate_options_group' ); ?>
+            <?php settings_fields('leotemplate_options_group'); ?>
 
             <label for="leosetting_hotline">HotLine</label>
             <input type="text" id="leosetting_hotline" name="leosetting_hotline" value="<?php echo get_option('leosetting_hotline'); ?>" />
@@ -244,7 +246,22 @@ function leotemplate_register_settings() {
             <?php submit_button(); ?>
         </form>
     </div>
-  <?php
-  } 
-  
-  ?>
+<?php
+}
+
+function my_pre_get_posts($query)
+{
+    if (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == tours_config()['slug']) {
+
+        if (isset($_GET['s'])) {
+            $query->set('meta_key', 'leo_tour_code');
+            $query->set('meta_value', $_GET['s']);
+        }
+    }
+    // return
+    return $query;
+}
+
+add_action('pre_get_posts', 'my_pre_get_posts');
+
+?>
