@@ -14,7 +14,7 @@ function leo_media(string $field_id, string $label) {
                     }
                     echo $image;
                      ?>
-            <input type="hidden" name="<?= $field_id; ?>" value="<?php echo esc_attr( $image_id ); ?>" class="regular-text leo_image_id" />
+            <input type="hidden" name="<?= $field_id; ?>" value="<?= esc_attr( $image_id ); ?>" class="regular-text leo_image_id" />
             <input type='button' class="button-primary leo_media_manager_single" value="<?php esc_attr_e('Select a image', 'mytextdomain'); ?>" />
         </div>
     <?php

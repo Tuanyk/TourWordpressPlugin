@@ -235,13 +235,13 @@ function leotemplate_options_page()
             <?php settings_fields('leotemplate_options_group'); ?>
 
             <label for="leosetting_hotline">HotLine</label>
-            <input type="text" id="leosetting_hotline" name="leosetting_hotline" value="<?php echo get_option('leosetting_hotline'); ?>" />
+            <input type="text" id="leosetting_hotline" name="leosetting_hotline" value="<?= get_option('leosetting_hotline'); ?>" />
 
             <label for="leosetting_categorydefaultcolor">Default Color for Category</label>
-            <input type="text" id="leosetting_categorydefaultcolor" name="leosetting_categorydefaultcolor" value="<?php echo get_option('leosetting_categorydefaultcolor'); ?>" />
+            <input type="text" id="leosetting_categorydefaultcolor" name="leosetting_categorydefaultcolor" value="<?= get_option('leosetting_categorydefaultcolor'); ?>" />
 
             <label for="zalo_official">Zalo Official Account Link</label>
-            <input type="text" id="zalo_official" name="zalo_official" value="<?php echo get_option('zalo_official'); ?>" />
+            <input type="text" id="zalo_official" name="zalo_official" value="<?= get_option('zalo_official'); ?>" />
 
             <?php submit_button(); ?>
         </form>
@@ -264,4 +264,10 @@ function my_pre_get_posts($query)
 
 add_action('pre_get_posts', 'my_pre_get_posts');
 
+
+// add_shortcode('tourlist', 'show_tour_list');
+// function show_tour_list( $atts )
+// {
+//     return $atts['t1'];
+// }
 ?>
