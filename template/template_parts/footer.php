@@ -2,11 +2,21 @@
     section.footer {
         border-top: 3px solid #cc3333;
         padding-top: 50px;
+        gap: 20px;
         display: flex;
         justify-content: space-evenly;
-        flex-wrap: wrap;
         color: rgba(84,89,95,0.79);
         font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+        section.footer {
+            align-items: center;
+            flex-direction: column;
+        }
+        section.footer > div {
+            width: 80% !important;
+        }
     }
     section.footer > div {
         width: 350px;
