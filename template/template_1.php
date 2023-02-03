@@ -41,6 +41,7 @@
             line-height: 1.2em;
             text-align: center;
             margin-top: 20px;
+            margin-bottom: 5px;
         }
         .sub-title {
             text-align: center;
