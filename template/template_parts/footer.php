@@ -528,7 +528,7 @@
     <div class="quick-call-button"></div>
     <div class="call-now-button" id="draggable">
     <div>
-        <p class="call-text">Hỗ trợ tư vấn</p>
+        <p class="call-text"><?= get_hotline(true); ?></p>
         <a href="tel:<?= get_hotline(true); ?>" id="quickcallbutton" title="Call Now">
         <div class="quick-alo-ph-circle active"></div>
         <div class="quick-alo-ph-circle-fill active"></div>
